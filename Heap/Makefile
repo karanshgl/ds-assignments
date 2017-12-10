@@ -1,0 +1,16 @@
+CC = g++
+
+CPP = $(wildcard *.cpp)
+OBJS = $(CPP:.cpp=.o)
+HEADER = $(wildcard *.hpp)
+
+default: output
+
+%.o: %.cpp 
+	$(CC) -c -o $@ $< 
+
+output: $(OBJS) $(HEADER)
+	$(CC) $^ -o $@
+
+clean:
+	-rm -f $(OBJS) output
